@@ -1,0 +1,408 @@
+/* Set some properties for the main colour categories */
+
+:root {
+    --uninfected: #BBB;
+    --infectious: #984ea3;
+    --symptomatic: #e41a1c;
+    --immune: #4daf4a;
+    --vaccinated: rgb(57, 57, 221);
+    --dead: black;
+
+}
+
+/* Set up the embedded font we're going to get from google */
+/* audiowide-regular - latin */
+@font-face {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Audiowide Regular'), local('Audiowide-Regular'),
+         url('fonts/audiowide-v7-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('fonts/audiowide-v7-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+  
+
+
+body {
+    font-family: 'Audiowide';font-size: 22px;
+}
+
+h1, h2 {
+    color: #d00;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    height: 60vh;
+}
+td {
+    background-color: var(--uninfected);
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border: 0px;
+    margin: 0px;
+}
+
+#day {
+    font-size: 150%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: left;
+    margin-left: 40%;
+}
+
+td.symptomatic {
+    background-color: var(--symptomatic);
+}
+
+td.immune {
+    background-color: var(--immune);
+}
+
+td.vaccinated {
+    background-color: var(--vaccinated);
+}
+
+td.infectious {
+    background-color: var(--infectious);
+}
+
+td.dead {
+    background-color: var(--dead);
+}
+
+button {
+    font-family: 'Audiowide';font-size: 22px;
+    font-size: 200%;
+    margin: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+}
+
+select {
+    font-family: 'Audiowide';font-size: 22px;
+    font-size: 100%;
+    color: red;
+}
+
+
+div.slider {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.slidercontrol {
+    background: lightgray;
+    -webkit-appearance: none;
+    height: 20px;
+}
+
+.slidercontrol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: url('virus_icon.png');
+    cursor: pointer;
+  }
+  
+  .slidercontrol::-moz-range-thumb {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background: url('virus_icon.png');
+    cursor: pointer;
+  }
+
+input {
+    width: 100%;
+}
+
+div.simulation {
+    margin-left: 2%;
+    margin-right: 65%;
+    width: 63%;
+}
+
+#simulationdiv {
+}
+
+#graphdiv {
+    display: none;
+    height: 20em;
+}
+
+
+
+div.virus {
+    width:28%;
+    margin-right: 2%;
+    float: right;
+}
+
+div.virus p {
+    font-size: 80%;
+}
+
+p.hint {
+    text-align: center;
+    color: darkgray;
+}
+
+p.center {
+    text-align: center;
+}
+
+#fadeout {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100%;
+    background: darkgray;
+    opacity: 0.7;
+}
+
+#welcome {
+    position: absolute;
+    height: 90vh;
+    width: 50%;
+    left: 50%;
+    top: 5%;
+    margin-left: -25%;
+    background: white;
+    border: 3px solid black;
+    padding: 0;
+    overflow: auto;  
+    display: none;   
+}
+
+#welcomecontent {
+    padding: 2em;
+}
+
+#welcomecontent li {
+    margin-bottom: 2em;
+    line-height: 120%;
+}
+
+#welcomecontent li strong{
+    color:#d00;
+    font-size: 1.3em;
+    text-transform: uppercase;
+}
+
+
+span.changevalue {
+    font-size: 150%;
+    color: red;
+}
+
+div.buttons {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+div.categories {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width:100%;
+}
+
+#viruslist {
+    list-style: none;
+    padding: 0;
+}
+
+#viruslist a {
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    display: block;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 150%;
+}
+
+#viruslist a.selected {
+    color: white;
+    background: black;
+}
+
+ul.sidebar {
+    display: table;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin:0;
+    border: 0;
+}    
+
+ul.sidebar li {
+    display: table-cell;
+    text-align: center;
+    color: white;
+    background: darkgray;
+    margin:2px;
+    padding: 0;
+    font-size: 70%;
+    text-transform: uppercase;
+}
+
+ul.sidebar li:hover {
+    background: rgb(151, 80, 80);
+}
+
+ul.sidebar li.selected {
+    background: red;
+}
+
+ul.sidebar li.smallonly {
+    display: none;
+}
+
+ul.sidebar li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 0.5em;
+}
+
+ul.categories {
+    list-style: none;
+    padding: 0;
+    margin:0;
+    border: 0;
+}    
+
+ul.categories li {
+    display: inline-block;
+    color: white;
+    margin:0;
+    border: 0;
+    padding: 0.5em;
+    font-size: 70%;
+    width: 9em;
+}
+
+ul.categories li.dead {
+    background-color: var(--dead);
+}
+
+ul.categories li.immune {
+    background-color: var(--immune);
+}
+
+ul.categories li.infectious {
+    background-color: var(--infectious);
+}
+
+ul.categories li.symptomatic {
+    background-color: var(--symptomatic);
+}
+
+ul.categories li.vaccinated {
+    background-color: var(--vaccinated);
+}
+
+ul.categories li.uninfected {
+    background-color: var(--uninfected);
+}
+
+ul.categories li.nhscost {
+    width: 10em;
+    background-color: var(--symptomatic);
+}
+
+ul.categories li.economycost {
+    width: 10em;
+    background-color: var(--symptomatic);
+}
+
+ul.categories li.vaccinationcost {
+    width: 10em;
+    background-color: var(--vaccinated);
+}
+
+/* Set different CSS for small screens such as phones */
+@media only screen and (max-width: 800px) {
+    ul.sidebar li.smallonly {
+        display: table-cell;
+    }
+    div.virus {
+        width: 100%;
+        float: none;
+    }
+    div.simulation {
+        width: 96%;
+        display: none;
+    }
+    #graphdiv {
+        height: 10em;
+    }
+
+    table {
+        height: 40vh;
+    }
+    h1 {
+        text-align: center;
+        font-size: 110%;
+    }
+    h2 {
+        font-size: 90%;
+    }
+
+    button {
+        font-size: 70%;
+        padding: 0.3em;
+        margin: 0.2em;
+        margin-bottom: 2em;
+        padding-top: 0.2em;
+        padding-bottom: 0.2em;
+    
+    }
+
+    #day {
+        font-size: 100%;
+    }
+
+    ul.categories li {
+        font-size: 50%; 
+    }
+
+    #welcome {
+        width: 80%;
+        margin-left: -40%;
+    }
+
+    #welcomecontent {
+        font-size: 70%;
+        padding: 1em;
+    }
+
+    #welcomecontent ul {
+        padding-left: 1em;
+    }
+    #welcomecontent li strong {
+        font-size: 90%;
+    }
+
+    #branding img {
+        max-width: 100px;
+        height: auto;
+    }
+
+}
