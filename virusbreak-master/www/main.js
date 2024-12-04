@@ -1,55 +1,34 @@
-// Be good an use strict mode
 'use-strict';
 
-// Variable to say where we are in the simulation
 let day = 1;
 
-// The amount of time(ms) taken between days - the speed of updates
 let timeout = 250;
-// nominal population. We'll use the 2019 UK population estimate
-let population = 66000000;
+
+let population = 33726000;
 
 
-// When we model costs we need to have some values to work from
-let costOfVaccine = 16;             // See bug #28 for value source
-let economicCostOfIllness = 160;    // Cost is per day for this value
-let economicCostOfDeath = 8600000;  
-let nhsCostOfIllness = 100;         // Cost is per day for this value
-let nhsCostOfDeath = 26000;        
+// Costos peru pandemia 2020
+let costOfVaccine = 45;          
+let economicCostOfIllness = 150;   
+let economicCostOfDeath = 3200000;        
 
-let criticalCareBeds = 150000;      // Number of critical and acute care beds in the UK
+let criticalCareBeds = 3000;     
 
-let bedUseRatio = 0;                // Were we oversubscribed for beds in the last round
+let bedUseRatio = 0.95;         
 
 
-// The size of the simulation area
 let rows = 50;
 let cols = 120;
 
-// let rows = 3;
-// let cols = 3;
-
-// The virus parameters we're currently using
 let virus = new Virus(0.1, 5, 2, 0.5, 0, false);
 
-// A variable to hold the people in the simulation
 let people = null;
 
-// A store for the ID for the interval function so we can stop
-// it later on.  Is populated by the click function of the start
-// button and reset by the stop button.
 let intervalID = null;
 
 
-// We'll make a variable which will hold the details of the
-// pre-prepared viruses which we're going to load from a 
-// json file
-
 let viruses = null;
 
-// A function which builds the simulation table to save us having
-// to long code the HTML. Also means we can control the size of the
-// simulation by just changing the rows/cols variables above.
 var createSimulationTable = function () {
 
     // Create the people 2D array
@@ -79,6 +58,9 @@ var createSimulationTable = function () {
     // We need to call this to get the numeric values set correctly initially.
     setPeopleClasses();
 }
+
+let nhsCostOfIllness = 100;      
+let nhsCostOfDeath = 26000;  
 
 // This function builds the initial Plotly graph which the user can switch to
 var createGraph = function() {
